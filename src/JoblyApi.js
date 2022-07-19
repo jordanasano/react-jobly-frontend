@@ -55,13 +55,11 @@ class JoblyApi {
     return res.companies;
   }
 
+  /** Get details on all companies that have names that match searchTerm. */
+  // returns:
+  // companies: [ { handle, name, description, numEmployees, logoUrl }, ...]
   static async getCompaniesByName(searchTerm) {
-
     let res = await this.request(`companies/`, {nameLike: searchTerm});
     return res.companies;
   }
-
-
-
-
 }
