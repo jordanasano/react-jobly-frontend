@@ -1,3 +1,4 @@
+import SearchBar from "./SearchBar";
 /** To render search bar and job card list.
  *
  *  No props.
@@ -10,7 +11,10 @@
 function JobList() {
     console.log("We're in the JobList component");
     return (
-        <p>JobList Page</p>
+        <div>
+            <SearchBar />
+            <p>JobList Page</p>
+        </div>
     )
 }
 

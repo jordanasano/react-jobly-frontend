@@ -1,17 +1,17 @@
-/** To render company details and job card list.
+/** To render company details.
  *
- *  No props.
+ *  Props:
+ *    - name, logo, description
  *
- *  State: jobs
+ *  No state.
  *
- *  RouteList -> CompanyDetail -> JobCardList
+ *  CompanyList -> CompanyCard
  */
 
-function CompanyCard() {
-
+function CompanyCard({ name, logo, description }) {
   return (
     <p>CompanyCard</p>
   )
-
-
 }
+
+export default CompanyCard;
