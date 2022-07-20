@@ -10,7 +10,11 @@
 
 function CompanyCard({ name, logo, description }) {
   return (
-    <p>CompanyCard</p>
+    <div>
+      <p>{name}</p>
+      <p>{description}</p>
+      <img src={logo} alt={`${name} logo`}/>
+    </div>
   )
 }
 
