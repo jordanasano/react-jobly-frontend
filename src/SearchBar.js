@@ -11,6 +11,7 @@ import { useState } from "react";
  *  [CompanyList, JobList] -> SearchBar
  */
 
+//TODO: make a fully controlled component
 function SearchBar({ searchQuery }) {
 
     const [formData, setFormData] = useState({});

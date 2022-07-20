@@ -10,6 +10,7 @@ import JobCard from "./JobCard";
  *  RouteList -> [CompanyList, JobList] -> JobCardList
  */
 
+//TODO: get rid of uuid, use pk
 function JobCardList({ jobs }) {
     jobs = jobs.map(job => ({ ...job, id: uuid() }));
 

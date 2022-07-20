@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import JoblyApi from "./JoblyApi";
 import JobCardList from "./JobCardList";
 
+//TODO: be more descriptive on State...
+
 /** To render company details and job card list.
  *
  *  No props.
@@ -12,6 +14,8 @@ import JobCardList from "./JobCardList";
  *
  *  RouteList -> CompanyDetail -> JobCardList
  */
+//TODO: company variable ... rework in terms of error handling/logic handling
+
 function CompanyDetail() {
     console.log("We're in the CompanyDetail component");
     const companyHandle = useParams().handle;
@@ -23,7 +27,7 @@ function CompanyDetail() {
 
             try {
                 currentData = await JoblyApi.getCompany(companyHandle);
-            } catch {
+            } catch (err) {
                 return setCompany('Company not found');
             }
 
@@ -33,6 +37,7 @@ function CompanyDetail() {
         fetchAndSet();
     }, []);
 
+    // TODO: if null then loading... else REWORK
     if (company === 'Loading...' || company === 'Company not found') {
         return <h1>{company}</h1>;
     }

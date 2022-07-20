@@ -17,6 +17,7 @@ function JobList() {
     console.log("We're in the JobList component");
     const [jobs, setJobs] = useState([]);
 
+    //TODO: docstring
     useEffect(function setInitialJobs() {
         async function fetchAndSet() {
             let currentJobs = await JoblyApi.getAllJobs();
@@ -24,6 +25,7 @@ function JobList() {
         }
         fetchAndSet();
     }, []);
+    //TODO: add state to this array
 
     if (jobs.length === 0) {
         return (
@@ -33,7 +35,7 @@ function JobList() {
             </div>
         );
     }
-
+    //TODO: docstring! ... and don't use event
     async function searchQuery(event) {
         event.preventDefault();
         console.log("we're in the searchQuery func... and event is: ",

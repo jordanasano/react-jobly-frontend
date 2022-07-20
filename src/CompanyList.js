@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import JoblyApi from "./JoblyApi";
 import { v4 as uuid } from "uuid";
 import { Link } from "react-router-dom";
+//TODO: be more explicit about State and Props, visual representation of...
 /** To render company cards and search bar.
  *
  *  No props.
@@ -25,6 +26,8 @@ function CompanyList() {
         }
         fetchAndSet();
     }, []);
+    //TODO: use handle instead of uuid call
+
 
     if (companies.length === 0) {
         return (
@@ -35,6 +38,7 @@ function CompanyList() {
         );
     }
 
+    //TODO: take search term not event
     async function searchQuery(event) {
         event.preventDefault();
         console.log("we're in the searchQuery func... and event is: ",
@@ -44,7 +48,7 @@ function CompanyList() {
         filteredCompanies = filteredCompanies.map(c => ({ ...c, id: uuid() }));
         setCompanies(filteredCompanies);
     }
-
+//TODO: use handle instead of uuid call
     return (
         <div>
             <SearchBar searchQuery={searchQuery} />
