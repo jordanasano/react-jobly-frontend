@@ -1,19 +1,16 @@
-import { v4 as uuid } from "uuid";
 import JobCard from "./JobCard";
 /** To render job cards.
  *
  *  Props:
  *      - jobs
+ *        (i.e. [{ id, title, salary, equity, companyHandle, companyName } ...])
  *
  *  No state.
  *
  *  RouteList -> [CompanyList, JobList] -> JobCardList
  */
 
-//TODO: get rid of uuid, use pk
 function JobCardList({ jobs }) {
-    jobs = jobs.map(job => ({ ...job, id: uuid() }));
-
     return (
         <div>
             {

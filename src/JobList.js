@@ -1,7 +1,6 @@
 import SearchBar from "./SearchBar";
 import { useEffect, useState } from 'react';
 import JoblyApi from "./JoblyApi";
-import { v4 as uuid } from "uuid";
 import JobCardList from "./JobCardList";
 
 /** To render search bar and job card list.
@@ -9,6 +8,7 @@ import JobCardList from "./JobCardList";
  *  No props.
  *
  *  State: jobs
+ *      (i.e. [{ id, title, salary, equity, companyHandle, companyName } ...])
  *
  *  RouteList -> JobList -> [SearchBar, JobCardList]
  */
@@ -17,7 +17,7 @@ function JobList() {
     console.log("We're in the JobList component");
     const [jobs, setJobs] = useState([]);
 
-    //TODO: docstring
+    // After first render, sets jobs to an array of job objects
     useEffect(function setInitialJobs() {
         async function fetchAndSet() {
             let currentJobs = await JoblyApi.getAllJobs();
@@ -25,7 +25,6 @@ function JobList() {
         }
         fetchAndSet();
     }, []);
-    //TODO: add state to this array
 
     if (jobs.length === 0) {
         return (
@@ -35,14 +34,10 @@ function JobList() {
             </div>
         );
     }
-    //TODO: docstring! ... and don't use event
-    async function searchQuery(event) {
-        event.preventDefault();
-        console.log("we're in the searchQuery func... and event is: ",
-            event.target[0].value);
-        const input = event.target[0].value;
-        let filteredJobs = await JoblyApi.getJobsByTitle(input);
-        filteredJobs = filteredJobs.map(c => ({ ...c, id: uuid() }));
+
+    /// Takes in a title, gets jobs that contain that title, updates jobs state
+    async function searchQuery(title) {
+        let filteredJobs = await JoblyApi.getJobsByTitle(title);
         setJobs(filteredJobs);
     }
 

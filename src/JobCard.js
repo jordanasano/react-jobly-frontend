@@ -1,8 +1,8 @@
-//TODO: what is a job????
 /** To render Job details.
  *
  *  Props:
  *    - job
+ *      (i.e. { id, title, salary, equity, companyHandle, companyName })
  *
  *  No state.
  *

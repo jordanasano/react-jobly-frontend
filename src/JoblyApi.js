@@ -73,7 +73,7 @@ class JoblyApi {
 
   /** Get details on all jobs that have names that match searchTerm. */
   // returns:
-  // jobs: [ { handle, name, description, numEmployees, logoUrl }, ...]
+  // jobs: [ { id, title, salary, equity, companyHandle, companyName }, ...]
   static async getJobsByTitle(searchTerm) {
     let res = await this.request(`jobs/`, { title: searchTerm });
     return res.jobs;

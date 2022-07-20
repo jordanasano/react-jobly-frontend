@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import JoblyApi from "./JoblyApi";
 import { v4 as uuid } from "uuid";
 import { Link } from "react-router-dom";
-//TODO: be more explicit about State and Props, visual representation of...
+
 /** To render company cards and search bar.
  *
  *  No props.
  *
  *  State: companies
+ *      (i.e [{ handle, name, description, numEmployees, logoUrl } ...])
  *
  *  RouteList -> CompanyList -> [SearchBar, CompanyCard]
  */
@@ -17,17 +18,14 @@ import { Link } from "react-router-dom";
 function CompanyList() {
     console.log("We're in the CompanyList component");
     const [companies, setCompanies] = useState([]);
-
+ 
     useEffect(function setInitialCompanies() {
         async function fetchAndSet() {
-            let currentCompanies = await JoblyApi.getAllCompanies();
-            currentCompanies = currentCompanies.map(c => ({ ...c, id: uuid() }));
+            const currentCompanies = await JoblyApi.getAllCompanies();
             setCompanies(currentCompanies);
         }
         fetchAndSet();
     }, []);
-    //TODO: use handle instead of uuid call
-
 
     if (companies.length === 0) {
         return (
@@ -38,23 +36,17 @@ function CompanyList() {
         );
     }
 
-    //TODO: take search term not event
-    async function searchQuery(event) {
-        event.preventDefault();
-        console.log("we're in the searchQuery func... and event is: ",
-            event.target[0].value);
-        const input = event.target[0].value;
-        let filteredCompanies = await JoblyApi.getCompaniesByName(input);
-        filteredCompanies = filteredCompanies.map(c => ({ ...c, id: uuid() }));
+    async function searchQuery(name) {
+        const filteredCompanies = await JoblyApi.getCompaniesByName(name);
         setCompanies(filteredCompanies);
     }
-//TODO: use handle instead of uuid call
+
     return (
         <div>
             <SearchBar searchQuery={searchQuery} />
             {
                 companies.map(c => (
-                    <Link key={c.id} to={`/companies/${c.handle}`}>
+                    <Link key={c.handle} to={`/companies/${c.handle}`}>
                         <CompanyCard
                             name={c.name}
                             description={c.description}

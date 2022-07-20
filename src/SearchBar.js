@@ -10,10 +10,7 @@ import { useState } from "react";
  *
  *  [CompanyList, JobList] -> SearchBar
  */
-
-//TODO: make a fully controlled component
 function SearchBar({ searchQuery }) {
-
     const [formData, setFormData] = useState({});
 
     function handleChange(evt) {
@@ -24,10 +21,20 @@ function SearchBar({ searchQuery }) {
         }));
     }
 
+
+    // Stops the page from reloading and invokes searchQuery with user input
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        searchQuery(formData.search);
+    }
+
     return (
-        <form onSubmit={searchQuery}>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="search"></label>
-            <input id="search" name="search" onChange={handleChange}
+            <input 
+                id="search" 
+                name="search" 
+                onChange={handleChange}
                 placeholder="Enter search term..." />
             <button>Search</button>
         </form>

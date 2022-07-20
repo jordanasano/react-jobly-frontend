@@ -3,23 +3,20 @@ import { useParams } from "react-router-dom";
 import JoblyApi from "./JoblyApi";
 import JobCardList from "./JobCardList";
 
-//TODO: be more descriptive on State...
-
 /** To render company details and job card list.
  *
  *  No props.
  *
  *  State:
  *      - company
+ *          (i.e { handle, name, description, numEmployees, logoUrl })
  *
  *  RouteList -> CompanyDetail -> JobCardList
  */
-//TODO: company variable ... rework in terms of error handling/logic handling
-
 function CompanyDetail() {
     console.log("We're in the CompanyDetail component");
     const companyHandle = useParams().handle;
-    const [company, setCompany] = useState('Loading...');
+    const [company, setCompany] = useState(null);
 
     useEffect(function setInitialCompany() {
         async function fetchAndSet() {
@@ -27,8 +24,8 @@ function CompanyDetail() {
 
             try {
                 currentData = await JoblyApi.getCompany(companyHandle);
-            } catch (err) {
-                return setCompany('Company not found');
+            } catch {
+                return setCompany([]);
             }
 
             console.log('getCompany(handle) response =', currentData);
@@ -37,9 +34,10 @@ function CompanyDetail() {
         fetchAndSet();
     }, []);
 
-    // TODO: if null then loading... else REWORK
-    if (company === 'Loading...' || company === 'Company not found') {
-        return <h1>{company}</h1>;
+    if (company === null) {
+        return <h1>Loading...</h1>;
+    } else if(company.length === 0) {
+        return <h1>Company not found</h1>
     }
 
     return (
