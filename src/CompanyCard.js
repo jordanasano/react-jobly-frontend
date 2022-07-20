@@ -13,7 +13,7 @@ function CompanyCard({ name, logo, description }) {
     <div>
       <p>{name}</p>
       <p>{description}</p>
-      <img src={logo} alt={`${name} logo`}/>
+      {logo !== null && <img src={logo} alt={`${name} logo`}/>}
     </div>
   )
 }

@@ -26,10 +26,15 @@ function CompanyList() {
     }, []);
 
     if(companies.length === 0) return <h1>Loading...</h1>;
-    
+
+
+    function searchQuery() {
+
+    }
+
     return (
         <div>
-            <SearchBar />
+            <SearchBar searchQuery={searchQuery}/>
             {
                 companies.map(c => (
                     <CompanyCard

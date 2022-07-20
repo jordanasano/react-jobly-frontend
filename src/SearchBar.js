@@ -10,7 +10,11 @@
 
 function SearchBar({ searchQuery }) {
     return (
-        <p>This is our search bar</p>
+        <form onSubmit={searchQuery}>
+        <label for="search"></label>
+        <input id="search" name="search" placeholder="search for a company"/>
+        <button>Search</button>
+        </form>
     )
 }
 
