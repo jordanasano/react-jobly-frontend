@@ -24,7 +24,7 @@ function SearchBar({ searchQuery }) {
 
     return (
         <form onSubmit={searchQuery}>
-        <label for="search"></label>
+        <label htmlFor="search"></label>
         <input id="search" name="search" onChange={handleChange}
                placeholder="search for a company" />
         <button>Search</button>
