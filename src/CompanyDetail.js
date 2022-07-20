@@ -6,7 +6,7 @@ import JobCardList from "./JobCardList";
 /** To render company details and job card list.
  *
  *  No props.
- * 
+ *
  *  State:
  *      - company
  *
@@ -21,13 +21,13 @@ function CompanyDetail() {
         async function fetchAndSet() {
             let currentData;
 
-            try{
+            try {
                 currentData = await JoblyApi.getCompany(companyHandle);
             } catch {
                 return setCompany('Company not found');
             }
 
-            console.log('getCompany(handle) response =' ,currentData);
+            console.log('getCompany(handle) response =', currentData);
             setCompany(currentData);
         }
         fetchAndSet();
@@ -43,8 +43,8 @@ function CompanyDetail() {
             <p>{company.description}</p>
             <JobCardList jobs={company.jobs} />
         </div>
-       
-    )
+
+    );
 }
 
 export default CompanyDetail;

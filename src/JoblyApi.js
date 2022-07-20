@@ -25,8 +25,8 @@ class JoblyApi {
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
-        ? data
-        : {};
+      ? data
+      : {};
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -59,9 +59,28 @@ class JoblyApi {
   // returns:
   // companies: [ { handle, name, description, numEmployees, logoUrl }, ...]
   static async getCompaniesByName(searchTerm) {
-    let res = await this.request(`companies/`, {name: searchTerm});
+    let res = await this.request(`companies/`, { name: searchTerm });
     return res.companies;
   }
+
+  /** Get details on all jobs */
+  // returns:
+  // jobs: [ { id, title, salary, equity, companyHandle, companyName }, ...]
+  static async getAllJobs() {
+    let res = await this.request(`jobs/`);
+    return res.jobs;
+  }
+
+  /** Get details on all jobs that have names that match searchTerm. */
+  // returns:
+  // jobs: [ { handle, name, description, numEmployees, logoUrl }, ...]
+  static async getJobsByTitle(searchTerm) {
+    let res = await this.request(`jobs/`, { title: searchTerm });
+    return res.jobs;
+  }
+
+
+
 }
 
 export default JoblyApi;

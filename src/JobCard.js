@@ -15,7 +15,7 @@ function JobCard({ job }) {
             <p>Salary: {job.salary}</p>
             <p>Equity: {job.equity !== null && job.equity}</p>
         </div>
-    )
+    );
 }
 
 export default JobCard;

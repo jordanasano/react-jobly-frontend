@@ -5,7 +5,8 @@ import { useState } from "react";
  *  Props:
  *      - searchQuery
  *
- *  No state
+ *  State:
+ *      - formData
  *
  *  [CompanyList, JobList] -> SearchBar
  */
@@ -16,20 +17,20 @@ function SearchBar({ searchQuery }) {
 
     function handleChange(evt) {
         const { name, value } = evt.target;
-        setFormData(formData => ({
-          ...formData,
-          [name]: value,
+        setFormData(st => ({
+            ...st,
+            [name]: value,
         }));
-      }
+    }
 
     return (
         <form onSubmit={searchQuery}>
-        <label htmlFor="search"></label>
-        <input id="search" name="search" onChange={handleChange}
-               placeholder="search for a company" />
-        <button>Search</button>
+            <label htmlFor="search"></label>
+            <input id="search" name="search" onChange={handleChange}
+                placeholder="Enter search term..." />
+            <button>Search</button>
         </form>
-    )
+    );
 }
 
 export default SearchBar;

@@ -11,17 +11,17 @@ import JobCard from "./JobCard";
  */
 
 function JobCardList({ jobs }) {
-    jobs = jobs.map(job => ({ ...job, id: uuid() }))
+    jobs = jobs.map(job => ({ ...job, id: uuid() }));
 
     return (
         <div>
-            { 
-                jobs.map( job => (
+            {
+                jobs.map(job => (
                     <JobCard key={job.id} job={job} />
                 ))
             }
         </div>
-    )
+    );
 }
 
 export default JobCardList;

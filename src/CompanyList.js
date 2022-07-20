@@ -26,8 +26,14 @@ function CompanyList() {
         fetchAndSet();
     }, []);
 
-    if (companies.length === 0) return <h1>Loading...</h1>;
-
+    if (companies.length === 0) {
+        return (
+            <div>
+                <SearchBar searchQuery={searchQuery} />
+                <h1>No Companies Found</h1>
+            </div>
+        );
+    }
 
     async function searchQuery(event) {
         event.preventDefault();
@@ -44,9 +50,8 @@ function CompanyList() {
             <SearchBar searchQuery={searchQuery} />
             {
                 companies.map(c => (
-                    <Link to={`/companies/${c.handle}`}>
+                    <Link key={c.id} to={`/companies/${c.handle}`}>
                         <CompanyCard
-                            key={c.id}
                             name={c.name}
                             description={c.description}
                             logo={c.logoUrl}
@@ -56,7 +61,7 @@ function CompanyList() {
                 )
             }
         </div>
-    )
+    );
 }
 
 export default CompanyList;

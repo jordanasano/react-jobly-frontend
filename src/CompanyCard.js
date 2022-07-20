@@ -13,9 +13,9 @@ function CompanyCard({ name, logo, description }) {
     <div>
       <p>{name}</p>
       <p>{description}</p>
-      {logo !== null && <img src={logo} alt={`${name} logo`}/>}
+      {logo !== null && <img src={logo} alt={`${name} logo`} />}
     </div>
-  )
+  );
 }
 
 export default CompanyCard;

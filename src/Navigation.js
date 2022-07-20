@@ -25,7 +25,7 @@ function Navigation() {
                 Jobs
             </NavLink>
         </nav>
-    )
+    );
 }
 
 export default Navigation;
