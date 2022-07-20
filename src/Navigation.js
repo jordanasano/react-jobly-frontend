@@ -1,18 +1,29 @@
-import { Link } from "react-router-dom";
-//TODO: Docstring
+import { NavLink } from "react-router-dom";
+import "./Navigation.css";
+
+/** To render the navigation bar.
+ *
+ *  No props.
+ *
+ *  No state.
+ *
+ *  App -> Navigation
+ */
+
 function Navigation() {
-    // TODO: Formatting/styling. Use NavLink 
+    console.log("We're in the Navigation component");
+
     return (
         <nav className="NavBar">
-            <Link to="/">
+            <NavLink className="home" to="/">
                 Jobly
-            </Link>
-            <Link to="/companies">
+            </NavLink>
+            <NavLink className="companies" to="/companies">
                 Companies
-            </Link>
-            <Link to="/jobs">
+            </NavLink>
+            <NavLink className="jobs" to="/jobs">
                 Jobs
-            </Link>
+            </NavLink>
         </nav>
     )
 }

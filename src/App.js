@@ -1,9 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import Navigation from './Navigation';
-import RouteList from './Routes';
+import RouteList from './RouteList';
 import { BrowserRouter } from 'react-router-dom';
-//TODO: Docstrings throughout
+
+/** To render Navigation and RouteList components
+ *  No props.
+ *
+ *  No state.
+ *
+ *  App -> [Navigation, RouteList]
+ */
 function App() {
   return (
     <div className="App">

@@ -1,0 +1,20 @@
+.NavBar {
+    display: flex;
+}
+
+.home {
+    text-align: left;
+    margin-right: 80%;
+}
+
+.companies {
+    text-align: right;
+}
+
+.jobs {
+    text-align: right;
+}
+
+.active {
+    background-color: aquamarine;
+}

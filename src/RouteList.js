@@ -3,8 +3,18 @@ import HomePage from './HomePage';
 import CompanyList from './CompanyList';
 import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
-//TODO: Docstring, change the file name
+
+/** To route user activity to applicable components.
+ *
+ *  No props.
+ *
+ *  No state.
+ *
+ *  App -> RouteList
+ */
+
 function RouteList() {
+    console.log("We're in the RouteList component");
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
