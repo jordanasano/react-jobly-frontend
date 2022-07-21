@@ -5,6 +5,9 @@ import { useContext } from "react";
 
 /** To render the navigation bar.
  *
+ *  Context: user
+ *         (i.e. { username, firstName, lastName, email, isAdmin })
+ *
  *  No props.
  *
  *  No state.

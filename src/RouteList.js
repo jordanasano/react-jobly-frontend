@@ -12,6 +12,9 @@ import Logout from "./Logout";
 
 /** To route user activity to applicable components.
  *
+ *  Context: user
+ *         (i.e. { username, firstName, lastName, email, isAdmin })
+ *
  *  Props:
  *      - logout (function)
  *
@@ -20,7 +23,7 @@ import Logout from "./Logout";
  *  App -> RouteList
  */
 
-function RouteList({logout, signUp}) {
+function RouteList({logout, signUp, login}) {
     console.log("We're in the RouteList component");
 
     const user  = useContext(userContext);
@@ -31,8 +34,8 @@ function RouteList({logout, signUp}) {
                 (<Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/companies" element={<CompanyList />} />
-                    <Route 
-                        path="/companies/:handle" 
+                    <Route
+                        path="/companies/:handle"
                         element={<CompanyDetail />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/jobs" element={<JobList />} />
@@ -42,7 +45,7 @@ function RouteList({logout, signUp}) {
             :
             (<Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<Login />}/>
+                    <Route path="/login" element={<Login login={login}/>}/>
                     <Route path="/signup" element={<Signup signUp={signUp}/>}/>
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>)

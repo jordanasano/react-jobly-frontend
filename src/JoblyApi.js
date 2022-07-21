@@ -79,14 +79,27 @@ class JoblyApi {
     return res.jobs;
   }
 
-  /** Posts a new user, and returns it's information. */
-  // returns:
-  // { username, firstName, lastName, email, isAdmin }
+  /** Posts a new user */
+  /* returns:
+  /* {newUser: { username, firstName, lastName, email, isAdmin },
+  /*  newToken: "JWT"} */
   static async signUp(user) {
-    await this.request(`auth/register`, user, 'post');
-    
-    return user;
-  } 
+    const { token } = await this.request(`auth/register`, user, 'post');
+    this.token = token;
+    return { newUser: user, newToken: token };
+  }
+
+  /** Logs in a user */
+  /* returns:
+  /* {newUser: { username, firstName, lastName, email, isAdmin },
+  /* newToken: "JWT"} */
+  static async login(userCredentials) {
+    const { token } = await this.request(`auth/token`, userCredentials, 'post');
+    this.token = token;
+    const { user } = await this.request(`users/${userCredentials.username}`);
+    return { newUser: user, newToken: token };
+  }
+
 }
 
 export default JoblyApi;

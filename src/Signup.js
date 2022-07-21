@@ -1,9 +1,13 @@
 import { useState } from "react";
 
 
-/**
+/** Registers a new user
  *
- */
+ *  props: signup()
+ *
+ *  state: formData
+ *
+ *  RouteList -> Signup */
 
  function Signup({ signUp }) {
   const [formData, setFormData] = useState({});
@@ -17,10 +21,11 @@ import { useState } from "react";
   }
 
 
-  // Stops the page from reloading and invokes searchQuery with user input
-  function handleSubmit(evt) {
+  // Stops the page from reloading and invokes signup function
+  // with user input
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signUp(formData);
+    await signUp(formData);
   }
 
   return (
