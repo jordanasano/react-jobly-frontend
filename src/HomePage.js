@@ -1,3 +1,4 @@
+import "./HomePage.css";
 /** To render homepage.
  *
  *  No props.
@@ -10,7 +11,9 @@
 function HomePage() {
     console.log("We're in the HomePage component");
     return (
-        <p>Home Page</p>
+        <div className="HomePage-container">
+            <h1>Jobly</h1>
+        </div>
     );
 }
 

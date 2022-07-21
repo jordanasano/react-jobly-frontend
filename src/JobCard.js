@@ -1,3 +1,4 @@
+import "./JobCard.css"
 /** To render Job details.
  *
  *  Props:
@@ -11,7 +12,7 @@
 
 function JobCard({ job }) {
     return (
-        <div>
+        <div className="JobCard-container">
             <h1>{job.title}</h1>
             <p>Salary: {job.salary}</p>
             <p>Equity: {job.equity !== null && job.equity}</p>

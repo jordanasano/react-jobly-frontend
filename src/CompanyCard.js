@@ -1,3 +1,4 @@
+import "./CompanyCard.css";
 /** To render company details.
  *
  *  Props:
@@ -10,7 +11,7 @@
 
 function CompanyCard({ name, logo, description }) {
   return (
-    <div>
+    <div className="CompanyCard-container">
       <p>{name}</p>
       <p>{description}</p>
       {logo !== null && <img src={logo} alt={`${name} logo`} />}
