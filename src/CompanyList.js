@@ -2,7 +2,6 @@ import CompanyCard from "./CompanyCard";
 import SearchBar from "./SearchBar";
 import { useEffect, useState } from 'react';
 import JoblyApi from "./JoblyApi";
-import { v4 as uuid } from "uuid";
 import { Link } from "react-router-dom";
 
 /** To render company cards and search bar.
@@ -18,7 +17,7 @@ import { Link } from "react-router-dom";
 function CompanyList() {
     console.log("We're in the CompanyList component");
     const [companies, setCompanies] = useState([]);
- 
+
     useEffect(function setInitialCompanies() {
         async function fetchAndSet() {
             const currentCompanies = await JoblyApi.getAllCompanies();

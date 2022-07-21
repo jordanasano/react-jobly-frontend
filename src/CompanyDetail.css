@@ -2,3 +2,14 @@
     text-shadow: 5px 5px 20px rgb(13, 2, 2);
     color: white;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a:hover {
+    color: rgb(142, 48, 10);
+}

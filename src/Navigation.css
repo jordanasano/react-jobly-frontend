@@ -1,21 +1,30 @@
 .NavBar {
     display: flex;
-    background-color: bisque;
+    background-color: slategray;
+    height:60px;
+    font-size: 24px;
+    font-family: monospace;
 }
 
 .home {
     text-align: left;
     margin-right: 80%;
+    margin-left:5%;
+    text-decoration: none;
 }
 
 .companies {
     text-align: right;
+    margin-right: 5%;
+    text-decoration: none;
 }
 
 .jobs {
     text-align: right;
+    margin-left: -60px;
+    text-decoration: none;
 }
 
 .active {
-    background-color: aquamarine;
+    color:aquamarine;
 }

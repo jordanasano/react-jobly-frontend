@@ -37,14 +37,14 @@ function CompanyDetail() {
 
     if (company === null) {
         return <h1>Loading...</h1>;
-    } else if(company.length === 0) {
+    } else if (company.length === 0) {
         return <h1>Company not found</h1>
     }
 
     return (
-        <div>
-            <h1 className="CompanyDetail-text">{company.name}</h1>
-            <h2 className="CompanyDetail-text">{company.description}</h2>
+        <div className='CompanyDetail-text'>
+            <h1>{company.name}</h1>
+            <p>{company.description}</p>
             <JobCardList jobs={company.jobs} />
         </div>
 
