@@ -79,8 +79,14 @@ class JoblyApi {
     return res.jobs;
   }
 
-
-
+  /** Posts a new user, and returns it's information. */
+  // returns:
+  // { username, firstName, lastName, email, isAdmin }
+  static async signUp(user) {
+    await this.request(`auth/register`, user, 'post');
+    
+    return user;
+  } 
 }
 
 export default JoblyApi;

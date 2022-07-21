@@ -20,7 +20,7 @@ import Logout from "./Logout";
  *  App -> RouteList
  */
 
-function RouteList({logout}) {
+function RouteList({logout, signUp}) {
     console.log("We're in the RouteList component");
 
     const user  = useContext(userContext);
@@ -43,7 +43,7 @@ function RouteList({logout}) {
             (<Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login />}/>
-                    <Route path="/signup" element={<Signup />}/>
+                    <Route path="/signup" element={<Signup signUp={signUp}/>}/>
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>)
             }
