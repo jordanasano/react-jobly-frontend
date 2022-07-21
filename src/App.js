@@ -6,21 +6,28 @@ import { useState } from "react";
 import userContext from './userContext';
 
 /** To render Navigation and RouteList components
+ * 
  *  No props.
  *
- *  No state.
+ *  State:
+ *    - user 
+ *        (i.e { username, firstName, lastName, email, isAdmin })
  *
- *  App -> [Navigation, RouteList]
+ *  App -> [userContext.Provider, Navigation, RouteList]
  */
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({username: 'testuser'});
+
+  function logout() {
+    setUser(null);
+  }
 
   return (
     <div className="App">
       <userContext.Provider value={user}>
         <BrowserRouter>
           <Navigation />
-          <RouteList />
+          <RouteList logout={logout} />
         </BrowserRouter>
       </userContext.Provider>
     </div>

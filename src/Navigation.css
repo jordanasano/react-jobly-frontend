@@ -15,14 +15,26 @@
 
 .companies {
     text-align: right;
-    margin-right: 5%;
+    margin-left: -360px;
+    margin-right: 60px;
     text-decoration: none;
 }
 
 .jobs {
     text-align: right;
-    margin-left: -60px;
+    margin-right: 60px;
     text-decoration: none;
+}
+
+.profile {
+    margin-right: 60px;    
+    text-decoration: none;
+}
+
+.logout {
+    text-align: right;
+    margin-right: 180px;
+    text-decoration: none;  
 }
 
 .active {
