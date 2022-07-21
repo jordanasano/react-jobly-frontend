@@ -6,11 +6,11 @@ import { useState } from "react";
 import userContext from './userContext';
 
 /** To render Navigation and RouteList components
- * 
+ *
  *  No props.
  *
  *  State:
- *    - user 
+ *    - user
  *        (i.e { username, firstName, lastName, email, isAdmin })
  *
  *  App -> [userContext.Provider, Navigation, RouteList]

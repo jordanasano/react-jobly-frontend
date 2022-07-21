@@ -1,4 +1,4 @@
-import { Navigate } from "react";
+import { useEffect } from 'react';
 /** To log out a user and reroute to homepage.
  *
  *  Props:
@@ -9,12 +9,14 @@ import { Navigate } from "react";
  *  RouteList -> Logout
  */
 
-function Logout({ logout }) {
-    logout();
 
-    return (
-        <Navigate to='/' />
-    );
+function Logout({ logout }) {
+
+    useEffect(function invokeLogout() {
+        logout();
+    }, []);
+
+     return null;
 
 }
 
