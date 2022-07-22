@@ -18,11 +18,16 @@ import JoblyApi from './JoblyApi';
  *  App -> [userContext.Provider, Navigation, RouteList]
  */
 function App() {
+  //const jwt = require("jsonwebtoken");
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  //const [token, setToken] = useState(null);
+  // if (localStorage.getItem("token") && user === null) {
+    //   setUser(jwt.decode())
+  // }
 
   function logout() {
     setUser(null);
+    localStorage.removeItem("token");
   }
 
   /// Takes in a title, gets jobs that contain that title, updates jobs state
@@ -30,7 +35,8 @@ function App() {
     console.log("formData from signUp is =", formData);
     const { newUser, newToken } = await JoblyApi.signUp(formData);
     setUser(newUser);
-    setToken(newToken);
+    //setToken(newToken);
+    localStorage.setItem("token", newToken);
   }
 
   /// Takes in a title, gets jobs that contain that title, updates jobs state
@@ -38,7 +44,8 @@ function App() {
     console.log("formData from login is =", formData);
     const { newUser, newToken } = await JoblyApi.login(formData);
     setUser(newUser);
-    setToken(newToken);
+    //setToken(newToken);
+    localStorage.setItem("token", newToken);
   }
 
   return (

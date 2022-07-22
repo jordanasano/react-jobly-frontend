@@ -18,7 +18,7 @@ import { useContext } from "react";
 function Navigation() {
     console.log("We're in the Navigation component");
 
-    const user  = useContext(userContext);
+    const user = useContext(userContext);
 
 
     return (
@@ -26,29 +26,29 @@ function Navigation() {
             <NavLink className="home" to="/">
                 Jobly
             </NavLink>
-            { user
-            ?
-            (<div>
-            <NavLink className="companies" to="/companies">
-                Companies
-            </NavLink>
-            <NavLink className="jobs" to="/jobs">
-                Jobs
-            </NavLink>
-            <NavLink className="profile" to="/profile">
-                Profile
-            </NavLink>
-            <NavLink className="logout" to="/logout">
-                Logout, {user.username}
-            </NavLink>
-            </div>)
-            : (<div><NavLink className="login" to="/login">
-                Login
-            </NavLink>
-            <NavLink className="signup" to="/signup">
-                Signup
-            </NavLink>
-            </div>)
+            {(user || localStorage.getItem("token"))
+                ?
+                (<div>
+                    <NavLink className="companies" to="/companies">
+                        Companies
+                    </NavLink>
+                    <NavLink className="jobs" to="/jobs">
+                        Jobs
+                    </NavLink>
+                    <NavLink className="profile" to="/profile">
+                        Profile
+                    </NavLink>
+                    <NavLink className="logout" to="/logout">
+                        Logout, {user.username}
+                    </NavLink>
+                </div>)
+                : (<div><NavLink className="login" to="/login">
+                    Login
+                </NavLink>
+                    <NavLink className="signup" to="/signup">
+                        Signup
+                    </NavLink>
+                </div>)
             }
         </nav>
     );

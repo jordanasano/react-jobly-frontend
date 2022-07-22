@@ -23,14 +23,15 @@ import Logout from "./Logout";
  *  App -> RouteList
  */
 
-function RouteList({logout, signUp, login}) {
+function RouteList({ logout, signUp, login }) {
     console.log("We're in the RouteList component");
 
-    const user  = useContext(userContext);
+    const user = useContext(userContext);
 
     return (
         <div>
-            { user ?
+            {(user || localStorage.getItem("token"))
+                ?
                 (<Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/companies" element={<CompanyList />} />
@@ -39,19 +40,19 @@ function RouteList({logout, signUp, login}) {
                         element={<CompanyDetail />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/jobs" element={<JobList />} />
-                    <Route path="/logout" element={<Logout logout={logout}/>} />
+                    <Route path="/logout" element={<Logout logout={logout} />} />
                     <Route path='*' element={<HomePage />} />
                 </Routes>)
-            :
-            (<Routes>
+                :
+                (<Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<Login login={login}/>}/>
-                    <Route path="/signup" element={<Signup signUp={signUp}/>}/>
+                    <Route path="/login" element={<Login login={login} />} />
+                    <Route path="/signup" element={<Signup signUp={signUp} />} />
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>)
             }
         </div>
-    )
+    );
 }
 
 export default RouteList;
