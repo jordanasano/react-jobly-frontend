@@ -20,51 +20,65 @@ import jwtDecode from 'jwt-decode';
  */
 function App() {
   const [user, setUser] = useState(null);
+  const LOGGED_IN_TOKEN = 'token';
 
-  //TODO: Docstring
+  // Every time the state of user changes, this function checks if there is a
+  // token in localStorage AND if user is null. If yes, this function gets run.
+  // When run, we get user data from the server through the token.
+  // We then uppdate the state of user.
   useEffect(function ifTokenUpdateUser() {
     async function decodeTokenUpdateUser() {
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem(LOGGED_IN_TOKEN);
       const { username } = jwtDecode(token);
       const currUser = await JoblyApi.getUserByUsername({ token, username });
       setUser(currUser);
     }
 
-    if (localStorage.getItem("token") && user === null) {
+    if (localStorage.getItem(LOGGED_IN_TOKEN) && user === null) {
       decodeTokenUpdateUser();
     }
   }, [user]);
 
-  //TODO: Docstring
+  //Function run to logout user and remove token from localStorage.
   function logout() {
     setUser(null);
-    localStorage.removeItem("token");
+    localStorage.removeItem(LOGGED_IN_TOKEN);
   }
 
-  /// Takes in a title, gets jobs that contain that title, updates jobs state
+  // Takes in user signup form data and updates app state of user.
+  // Saves token in local storage. Creates user on server.
   async function signUp(formData) {
     console.log("formData from signUp is =", formData);
     const { newUser, newToken } = await JoblyApi.signUp(formData);
     setUser(newUser);
-    localStorage.setItem("token", newToken);
+    localStorage.setItem(LOGGED_IN_TOKEN, newToken);
   }
 
-  /// Takes in a title, gets jobs that contain that title, updates jobs state
+  // Takes in user login form data and updates app state of user.
+  // Saves token in local storage.
   async function login(formData) {
     console.log("formData from login is =", formData);
     const { newUser, newToken } = await JoblyApi.login(formData);
     setUser(newUser);
-    localStorage.setItem("token", newToken);
+    localStorage.setItem(LOGGED_IN_TOKEN, newToken);
   }
-  // TODO: Switch to checking if user is null, global const for 'token'
-  if(!user && localStorage.getItem('token')) return <p>Loading...</p>;
+
+  // Takes in updated user profile information. Updates user state. Updates
+  // user info on server.
+  async function updateUser(formData) {
+    const { updatedUser } = await JoblyApi.updateUser(formData);
+    setUser(updatedUser);
+  }
+
+  if (user === null && localStorage.getItem(LOGGED_IN_TOKEN)) return <p>Loading...</p>;
 
   return (
     <div className="App">
       <userContext.Provider value={user}>
         <BrowserRouter>
           <Navigation />
-          <RouteList logout={logout} signUp={signUp} login={login} />
+          <RouteList logout={logout} signUp={signUp} login={login}
+            updateUser={updateUser} />
         </BrowserRouter>
       </userContext.Provider>
     </div>

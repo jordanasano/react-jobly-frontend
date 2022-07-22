@@ -12,6 +12,7 @@ function Login({ login }) {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState(null);
 
+  // Updates state of form data through any change in the input fields
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(st => ({
@@ -36,7 +37,7 @@ function Login({ login }) {
     <form onSubmit={handleSubmit} className='Login-container'>
       {errors && (
         errors.map((err, idx) =>
-          <p key={idx} className='Login-error'>{err.slice(8)}</p>)
+          <p key={idx} className='Login-error'>{err}</p>)
       )}
       <label htmlFor="username"></label>
       <input

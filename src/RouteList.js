@@ -23,7 +23,7 @@ import Logout from "./Logout";
  *  App -> RouteList
  */
 
-function RouteList({ logout, signUp, login }) {
+function RouteList({ logout, signUp, login, updateUser }) {
     console.log("We're in the RouteList component");
 
     const user = useContext(userContext);
@@ -38,7 +38,7 @@ function RouteList({ logout, signUp, login }) {
                     <Route
                         path="/companies/:handle"
                         element={<CompanyDetail />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile" element={<Profile updateUser={updateUser}/>} />
                     <Route path="/jobs" element={<JobList />} />
                     <Route path="/logout" element={<Logout logout={logout} />} />
                     <Route path='*' element={<HomePage />} />
