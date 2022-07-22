@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./Signup.css";
 
 /** Registers a new user
  *
@@ -11,6 +11,7 @@ import { useState } from "react";
 
  function Signup({ signUp }) {
   const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState(null);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -25,11 +26,19 @@ import { useState } from "react";
   // with user input
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await signUp(formData);
+    try {
+      await signUp(formData);
+    } catch(err) {
+      setErrors(err);
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='Signup-container'>
+      {errors && (
+        errors.map((err, idx) =>
+          <p key={idx} className='Signup-error'>{err.slice(8)}</p>)
+      )}
       <label htmlFor="username"></label>
       <input
         id="username"

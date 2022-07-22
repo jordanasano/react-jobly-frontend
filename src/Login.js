@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Login.css";
 
 /** Logs in a registered user
  *
@@ -7,8 +8,9 @@ import { useState } from "react";
  *  state: formData
  *
  *  RouteList -> Login */
- function Login({ login }) {
+function Login({ login }) {
   const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState(null);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -18,16 +20,24 @@ import { useState } from "react";
     }));
   }
 
-  //TODO: show error potentially... make async
   // Stops the page from reloading and invokes login function
   // with user input
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await login(formData);
+    try {
+      await login(formData);
+    } catch (err) {
+      console.log('errors are ', err)
+      setErrors(err);
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='Login-container'>
+      {errors && (
+        errors.map((err, idx) =>
+          <p key={idx} className='Login-error'>{err.slice(8)}</p>)
+      )}
       <label htmlFor="username"></label>
       <input
         id="username"
