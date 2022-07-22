@@ -2,9 +2,10 @@ import './App.css';
 import Navigation from './Navigation';
 import RouteList from './RouteList';
 import { BrowserRouter } from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import userContext from './userContext';
 import JoblyApi from './JoblyApi';
+import jwtDecode from 'jwt-decode';
 
 
 /** To render Navigation and RouteList components
@@ -18,13 +19,23 @@ import JoblyApi from './JoblyApi';
  *  App -> [userContext.Provider, Navigation, RouteList]
  */
 function App() {
-  //const jwt = require("jsonwebtoken");
   const [user, setUser] = useState(null);
-  //const [token, setToken] = useState(null);
-  // if (localStorage.getItem("token") && user === null) {
-    //   setUser(jwt.decode())
-  // }
 
+  //TODO: Docstring
+  useEffect(function ifTokenUpdateUser() {
+    async function decodeTokenUpdateUser() {
+      const token = localStorage.getItem("token")
+      const { username } = jwtDecode(token);
+      const currUser = await JoblyApi.getUserByUsername({ token, username });
+      setUser(currUser);
+    }
+
+    if (localStorage.getItem("token") && user === null) {
+      decodeTokenUpdateUser();
+    }
+  }, [user]);
+
+  //TODO: Docstring
   function logout() {
     setUser(null);
     localStorage.removeItem("token");
@@ -35,7 +46,6 @@ function App() {
     console.log("formData from signUp is =", formData);
     const { newUser, newToken } = await JoblyApi.signUp(formData);
     setUser(newUser);
-    //setToken(newToken);
     localStorage.setItem("token", newToken);
   }
 
@@ -44,9 +54,10 @@ function App() {
     console.log("formData from login is =", formData);
     const { newUser, newToken } = await JoblyApi.login(formData);
     setUser(newUser);
-    //setToken(newToken);
     localStorage.setItem("token", newToken);
   }
+  // TODO: Switch to checking if user is null, global const for 'token'
+  if(!user && localStorage.getItem('token')) return <p>Loading...</p>;
 
   return (
     <div className="App">

@@ -100,6 +100,15 @@ class JoblyApi {
     return { newUser: user, newToken: token };
   }
 
+  /** Gets an existing user */
+  /* returns:
+  /* { username, firstName, lastName, isAdmin, jobs } */
+  static async getUserByUsername({token, username}) {
+    this.token = token;
+    const { user } = await this.request(`users/${username}`);
+    return user;
+  }
+
 }
 
 export default JoblyApi;

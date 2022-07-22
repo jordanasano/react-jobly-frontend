@@ -30,7 +30,7 @@ function RouteList({ logout, signUp, login }) {
 
     return (
         <div>
-            {(user || localStorage.getItem("token"))
+            {user
                 ?
                 (<Routes>
                     <Route path="/" element={<HomePage />} />

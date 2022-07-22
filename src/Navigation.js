@@ -26,7 +26,7 @@ function Navigation() {
             <NavLink className="home" to="/">
                 Jobly
             </NavLink>
-            {(user || localStorage.getItem("token"))
+            {user
                 ?
                 (<div>
                     <NavLink className="companies" to="/companies">
