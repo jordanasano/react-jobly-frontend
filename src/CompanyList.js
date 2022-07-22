@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
  *
  *  RouteList -> CompanyList -> [SearchBar, CompanyCard]
  */
-
+//TODO: Add state for search term to display in line 33
 function CompanyList() {
     console.log("We're in the CompanyList component");
     const [companies, setCompanies] = useState([]);

@@ -9,7 +9,7 @@ import "./JobCard.css"
  *
  *  JobList -> JobCard
  */
-
+//TODO: Class JobCard
 function JobCard({ job }) {
     return (
         <div className="JobCard-container">

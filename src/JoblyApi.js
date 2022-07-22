@@ -103,10 +103,21 @@ class JoblyApi {
   /** Gets an existing user */
   /* returns:
   /* { username, firstName, lastName, isAdmin, jobs } */
-  static async getUserByUsername({token, username}) {
+  static async getUserByUsername({ token, username }) {
     this.token = token;
     const { user } = await this.request(`users/${username}`);
     return user;
+  }
+
+  /** Updates a user */
+  /* returns:
+  /* {updatedUser: { username, firstName, lastName, email, isAdmin }} */
+  static async updateUser(formData, username, token) {
+    this.token = token;
+    console.log("token =", this.token);
+    console.log("formData =", formData);
+    const { user } = await this.request(`users/${username}`, formData, 'patch');
+    return { updatedUser: user };
   }
 
 }

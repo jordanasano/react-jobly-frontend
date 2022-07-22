@@ -14,10 +14,9 @@ function Logout({ logout }) {
 
     useEffect(function invokeLogout() {
         logout();
-    }, []);
+    });
 
-     return null;
-
+    return null;
 }
 
 export default Logout;

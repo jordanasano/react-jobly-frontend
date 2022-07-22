@@ -8,7 +8,7 @@ import "./CompanyCard.css";
  *
  *  CompanyList -> CompanyCard
  */
-
+//TODO: CompanyCard-container -> CompanyCard
 function CompanyCard({ name, logo, description }) {
   return (
     <div className="CompanyCard-container">

@@ -44,7 +44,7 @@ function App() {
     setUser(null);
     localStorage.removeItem(LOGGED_IN_TOKEN);
   }
-
+  //TODO: Destructure in args
   // Takes in user signup form data and updates app state of user.
   // Saves token in local storage. Creates user on server.
   async function signUp(formData) {
@@ -53,7 +53,7 @@ function App() {
     setUser(newUser);
     localStorage.setItem(LOGGED_IN_TOKEN, newToken);
   }
-
+  //TODO: login -> logIn
   // Takes in user login form data and updates app state of user.
   // Saves token in local storage.
   async function login(formData) {
@@ -66,11 +66,17 @@ function App() {
   // Takes in updated user profile information. Updates user state. Updates
   // user info on server.
   async function updateUser(formData) {
-    const { updatedUser } = await JoblyApi.updateUser(formData);
+    const token = localStorage.getItem(LOGGED_IN_TOKEN);
+    const { updatedUser } = await JoblyApi.updateUser(
+      formData, 
+      user.username,
+      token);
     setUser(updatedUser);
   }
 
-  if (user === null && localStorage.getItem(LOGGED_IN_TOKEN)) return <p>Loading...</p>;
+  if (user === null && localStorage.getItem(LOGGED_IN_TOKEN)) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="App">

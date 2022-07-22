@@ -5,7 +5,7 @@ import "./Login.css";
  *
  *  props: login()
  *
- *  state: formData
+ *  state: formData, errors
  *
  *  RouteList -> Login */
 function Login({ login }) {

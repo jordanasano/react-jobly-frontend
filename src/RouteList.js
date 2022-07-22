@@ -16,7 +16,7 @@ import Logout from "./Logout";
  *         (i.e. { username, firstName, lastName, email, isAdmin })
  *
  *  Props:
- *      - logout (function)
+ *      - logout(), signUp(), login(), updateUser()
  *
  *  No state.
  *
@@ -32,22 +32,29 @@ function RouteList({ logout, signUp, login, updateUser }) {
         <div>
             {user
                 ?
+                // FIXME:Format consistently
                 (<Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/companies" element={<CompanyList />} />
                     <Route
                         path="/companies/:handle"
                         element={<CompanyDetail />} />
-                    <Route path="/profile" element={<Profile updateUser={updateUser}/>} />
+                    <Route 
+                        path="/profile" 
+                        element={<Profile updateUser={updateUser}/>} />
                     <Route path="/jobs" element={<JobList />} />
-                    <Route path="/logout" element={<Logout logout={logout} />} />
+                    <Route 
+                        path="/logout" 
+                        element={<Logout logout={logout} />} />
                     <Route path='*' element={<HomePage />} />
                 </Routes>)
                 :
                 (<Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login login={login} />} />
-                    <Route path="/signup" element={<Signup signUp={signUp} />} />
+                    <Route 
+                        path="/signup" 
+                        element={<Signup signUp={signUp} />} />
                     <Route path='*' element={<Navigate to='/' />} />
                 </Routes>)
             }

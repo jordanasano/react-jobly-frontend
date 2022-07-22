@@ -3,7 +3,7 @@ import { useState } from "react";
 /** To render a search bar.
  *
  *  Props:
- *      - searchQuery
+ *      - searchQuery()
  *
  *  State:
  *      - formData
@@ -13,6 +13,7 @@ import { useState } from "react";
 function SearchBar({ searchQuery }) {
     const [formData, setFormData] = useState({});
 
+  // Updates state of form data through any change in the input fields
     function handleChange(evt) {
         const { name, value } = evt.target;
         setFormData(st => ({
@@ -23,9 +24,9 @@ function SearchBar({ searchQuery }) {
 
 
     // Stops the page from reloading and invokes searchQuery with user input
-    function handleSubmit(evt) {
+    async function handleSubmit(evt) {
         evt.preventDefault();
-        searchQuery(formData.search);
+        await searchQuery(formData.search);
     }
 
     return (

@@ -12,7 +12,7 @@ import JobCardList from "./JobCardList";
  *
  *  RouteList -> JobList -> [SearchBar, JobCardList]
  */
-
+//TODO: Current search term -> state
 function JobList() {
     console.log("We're in the JobList component");
     const [jobs, setJobs] = useState([]);

@@ -33,7 +33,7 @@ function CompanyDetail() {
             setCompany(currentData);
         }
         fetchAndSet();
-    }, []);
+    }, [companyHandle]);
 
     if (company === null) {
         return <h1>Loading...</h1>;
