@@ -23,7 +23,7 @@ import Logout from "./Logout";
  *  App -> RouteList
  */
 
-function RouteList({ logout, signUp, login, updateUser }) {
+function RouteList({ logout, signUp, logIn, updateUser }) {
     console.log("We're in the RouteList component");
 
     const user = useContext(userContext);
@@ -32,30 +32,43 @@ function RouteList({ logout, signUp, login, updateUser }) {
         <div>
             {user
                 ?
-                // FIXME:Format consistently
                 (<Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/companies" element={<CompanyList />} />
+                    <Route
+                        path="/"
+                        element={<HomePage />} />
+                    <Route
+                        path="/companies"
+                        element={<CompanyList />} />
                     <Route
                         path="/companies/:handle"
                         element={<CompanyDetail />} />
-                    <Route 
-                        path="/profile" 
+                    <Route
+                        path="/profile"
                         element={<Profile updateUser={updateUser}/>} />
-                    <Route path="/jobs" element={<JobList />} />
-                    <Route 
-                        path="/logout" 
+                    <Route
+                        path="/jobs"
+                        element={<JobList />} />
+                    <Route
+                        path="/logout"
                         element={<Logout logout={logout} />} />
-                    <Route path='*' element={<HomePage />} />
+                    <Route
+                        path='*'
+                        element={<HomePage />} />
                 </Routes>)
                 :
                 (<Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<Login login={login} />} />
-                    <Route 
-                        path="/signup" 
+                    <Route
+                        path="/"
+                        element={<HomePage />} />
+                    <Route
+                        path="/login"
+                        element={<Login logIn={logIn} />} />
+                    <Route
+                        path="/signup"
                         element={<Signup signUp={signUp} />} />
-                    <Route path='*' element={<Navigate to='/' />} />
+                    <Route
+                        path='*'
+                        element={<Navigate to='/' />} />
                 </Routes>)
             }
         </div>

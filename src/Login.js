@@ -8,7 +8,7 @@ import "./Login.css";
  *  state: formData, errors
  *
  *  RouteList -> Login */
-function Login({ login }) {
+function Login({ logIn }) {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState(null);
 
@@ -26,7 +26,7 @@ function Login({ login }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      await login(formData);
+      await logIn(formData);
     } catch (err) {
       console.log('errors are ', err)
       setErrors(err);

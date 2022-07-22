@@ -44,31 +44,34 @@ function App() {
     setUser(null);
     localStorage.removeItem(LOGGED_IN_TOKEN);
   }
-  //TODO: Destructure in args
+
   // Takes in user signup form data and updates app state of user.
   // Saves token in local storage. Creates user on server.
-  async function signUp(formData) {
+  async function signUp({ username, firstName, lastName, email, password }) {
+    const formData = { username, firstName, lastName, email, password };
     console.log("formData from signUp is =", formData);
     const { newUser, newToken } = await JoblyApi.signUp(formData);
     setUser(newUser);
     localStorage.setItem(LOGGED_IN_TOKEN, newToken);
   }
-  //TODO: login -> logIn
+
   // Takes in user login form data and updates app state of user.
   // Saves token in local storage.
-  async function login(formData) {
+  async function logIn({ username, password }) {
+    const formData = { username, password };
     console.log("formData from login is =", formData);
-    const { newUser, newToken } = await JoblyApi.login(formData);
+    const { newUser, newToken } = await JoblyApi.logIn(formData);
     setUser(newUser);
     localStorage.setItem(LOGGED_IN_TOKEN, newToken);
   }
 
   // Takes in updated user profile information. Updates user state. Updates
   // user info on server.
-  async function updateUser(formData) {
+  async function updateUser({ firstName, lastName, email }) {
+    const formData = { firstName, lastName, email };
     const token = localStorage.getItem(LOGGED_IN_TOKEN);
     const { updatedUser } = await JoblyApi.updateUser(
-      formData, 
+      formData,
       user.username,
       token);
     setUser(updatedUser);
@@ -83,7 +86,7 @@ function App() {
       <userContext.Provider value={user}>
         <BrowserRouter>
           <Navigation />
-          <RouteList logout={logout} signUp={signUp} login={login}
+          <RouteList logout={logout} signUp={signUp} logIn={logIn}
             updateUser={updateUser} />
         </BrowserRouter>
       </userContext.Provider>

@@ -4,9 +4,9 @@ import { useContext } from "react";
 /** To render homepage.
  *
  *  Context:
- *      - user 
+ *      - user
  *          (i.e. { username, firstName, lastName, email, isAdmin })
- * 
+ *
  *  No props.
  *
  *  No state.
@@ -20,7 +20,7 @@ function HomePage() {
     const user = useContext(userContext);
 
     return (
-        <div className="HomePage-container">
+        <div className="HomePage">
             <h1>Jobly</h1>
             { user && <h2>Welcome back, {user.firstName}!</h2> }
         </div>

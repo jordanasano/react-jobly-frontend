@@ -10,7 +10,7 @@ import "./Profile.css";
  *
  *  State:
  *    - formData, messages
- * 
+ *
  *  Context:
  *    - user
  *        (i.e. { username, firstName, lastName, email, isAdmin })
@@ -38,8 +38,8 @@ function Profile({ updateUser }) {
     evt.preventDefault();
     console.log("formData in handleSubmit=", formData);
     try {
-      setMessages(['Successfully updated user!']);
       await updateUser(formData);
+      setMessages(['Successfully updated user!']);
     } catch (err) {
       console.log("messages are =", err);
       setMessages(err);

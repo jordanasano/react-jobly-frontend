@@ -93,7 +93,7 @@ class JoblyApi {
   /* returns:
   /* {newUser: { username, firstName, lastName, email, isAdmin },
   /* newToken: "JWT"} */
-  static async login(userCredentials) {
+  static async logIn(userCredentials) {
     const { token } = await this.request(`auth/token`, userCredentials, 'post');
     this.token = token;
     const { user } = await this.request(`users/${userCredentials.username}`);
