@@ -1,42 +1,22 @@
 .NavBar {
     display: flex;
     background-color: slategray;
-    height:60px;
-    font-size: 24px;
+    height: 60px;
     font-family: monospace;
+    align-items: center;
+    flex-shrink: 1;
 }
 
-.home {
+.NavBar-home-link {
+    margin-left: 10em;
+    width: 20%;
     text-align: left;
-    margin-right: 80%;
-    margin-left:5%;
-    text-decoration: none;
 }
 
-.companies {
-    text-align: right;
-    margin-left: -360px;
-    margin-right: 60px;
-    text-decoration: none;
-}
-
-.jobs {
-    text-align: right;
-    margin-right: 60px;
-    text-decoration: none;
-}
-
-.profile {
-    margin-right: 60px;    
-    text-decoration: none;
-}
-
-.logout {
-    text-align: right;
-    margin-right: 180px;
-    text-decoration: none;  
+.NavBar-link {
+    margin: 8em;
 }
 
 .active {
-    color:aquamarine;
+    color: aquamarine;
 }

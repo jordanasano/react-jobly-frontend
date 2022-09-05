@@ -1,6 +1,7 @@
 .CompanyDetail-text {
     text-shadow: 5px 5px 20px rgb(13, 2, 2);
     color: white;
+    height: 100vh;
 }
 
 a {

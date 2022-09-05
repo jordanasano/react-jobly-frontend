@@ -48,6 +48,7 @@ function Login({ logIn }) {
       <label htmlFor="password"></label>
       <input
         id="password"
+        type="password"
         name="password"
         onChange={handleChange}
         placeholder="Enter password..." />

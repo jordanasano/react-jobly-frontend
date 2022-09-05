@@ -23,29 +23,29 @@ function Navigation() {
 
     return (
         <nav className="NavBar">
-            <NavLink className="home" to="/">
+            <NavLink className="NavBar-home-link" to="/">
                 Jobly
             </NavLink>
             {user
                 ?
                 (<div>
-                    <NavLink className="companies" to="/companies">
+                    <NavLink className="NavBar-link" to="/companies">
                         Companies
                     </NavLink>
-                    <NavLink className="jobs" to="/jobs">
+                    <NavLink className="NavBar-link" to="/jobs">
                         Jobs
                     </NavLink>
-                    <NavLink className="profile" to="/profile">
+                    <NavLink className="NavBar-link" to="/profile">
                         Profile
                     </NavLink>
-                    <NavLink className="logout" to="/logout">
+                    <NavLink className="NavBar-link" to="/logout">
                         Logout, {user.username}
                     </NavLink>
                 </div>)
-                : (<div><NavLink className="login" to="/login">
+                : (<div><NavLink className="NavBar-link" to="/login">
                     Login
                 </NavLink>
-                    <NavLink className="signup" to="/signup">
+                    <NavLink className="NavBar-link" to="/signup">
                         Signup
                     </NavLink>
                 </div>)
